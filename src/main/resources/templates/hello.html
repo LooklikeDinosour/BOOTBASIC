@@ -7,6 +7,69 @@
 <body>
 	
 	타임리프 뷰
+	
+	<button id="getData">겟방식</button>
+	
+	<button id="getJSON">포스트방식</button>
+	
+	<button id="getFetch">실습</button>
+	
+	<button id="getFetch2">실습2</button>
+	
+	<script>
+		//JS공부중요//
+		////////////////////////////////////////////////////
+		let getData = document.getElementById("getData");
+		getData.onclick = () => {
+		
+			fetch("/getData1?sno=1&first=홍길동")
+			.then( response => response.json() )
+			.then( t => console.log(t) ); 
+			
+		}
+		
+		////////////////////////////////////////////////////
+		let getJSON = document.getElementById("getJSON");
+		getJSON.onclick = () => {
+			
+			fetch("/getJSON1", {
+				method: "post",
+				headers : {
+					"Content-Type" : "application/json"
+				},
+				body : JSON.stringify({ "sno" : 1,    "first" : "홍길동",    "last" : "이순신" })
+				
+			})
+			.then( response => response.json() )
+			.then( t => console.log(t) )
+			
+		}
+		
+		//////////////////////////////////////////////
+		let getF = document.getElementById("getFetch");
+		getF.onclick = () => {
+			
+		
+			fetch("http://localhost:8181/api/v1/getData/1/홍길동") //요청보내는 주소
+			.then( response => response.json() )
+			.then( t => console.log(t) );
+			
+		}
+		//////////////////////////
+		let b = document.getElementById("getFetch2");
+		b.onclick = () => {
+			
+			fetch("http://localhost:8181/api/v1/getInfo", {
+				method : "post",
+				headers : {"Content-Type": "application/json"},
+				body : JSON.stringify({"num" : "1", "name" : "이순신"})
+			})
+			.then( response => response.json() )
+			.then( t => console.log(t) )		
+		}
+		
+		
+	</script>
 
 </body>
 </html>

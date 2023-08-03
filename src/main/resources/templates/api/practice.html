@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	이상하구만ㅁ
+	
+	<button id="gettt">겟실습방식</button>
+	
+	
+	<script>
+		
+		let gettt = document.getElementById("gettt");
+		gettt.onclick = () => {
+			
+		
+		fetch("/getData?sno=3&first=김")
+		.then( response => response.json() )
+		.then( t => console.log(t) );
+		
+		}
+		
+		
+	</script>
+
+</body>
+</html>
